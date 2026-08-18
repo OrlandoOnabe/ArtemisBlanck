@@ -6,7 +6,7 @@ Product Owner(PO):
 
 
 Scrum Master(SM):
- -Paulo Gabriel Gonçalves Leme
+ - Paulo Gabriel Gonçalves Leme
 
 
 Desevolvedores:
