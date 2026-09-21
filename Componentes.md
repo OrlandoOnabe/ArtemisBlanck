@@ -1,6 +1,6 @@
 # Modelagem de Componentes
 
-## 2. Análise dos Fluxos dos Casos de Uso
+## 1. Análise dos Fluxos dos Casos de Uso
 
 ### Aplicar Feedback
 
@@ -27,7 +27,7 @@
 | Agendar Reunião | 1. O aluno realiza o login na plataforma.<br>2. O aluno acessa a opção "Orientadores".<br>3. O sistema apresenta a lista de orientadores cadastrados.<br>4. O aluno verifica as informações dos orientadores, como área de atuação e número de vagas.<br>5. O aluno seleciona um orientador.<br>6. O sistema apresenta as informações do orientador e abre o calendário com os horários disponíveis.<br>7. O aluno seleciona um horário.<br>8. O aluno confirma o agendamento.<br>9. O sistema registra a reunião associada ao aluno e orientador.<br>10. O sistema adiciona a reunião ao calendário.<br>11. O sistema envia uma notificação sobre a reunião para aluno e orientador.<br>12. O sistema confirma o agendamento. | 3: `+ListarOrientadores()`<br>6: `+MostrarAgenda()`<br>9: `+RegistrarReuniao()`<br>11: `+EnviarNotificacao()` |
 
 
-## 4. Identificação dos Componentes
+## 2. Identificação dos Componentes
 
 | Componente | Responsabilidade | Operações realizadas |
 |---|---|---|
@@ -39,7 +39,7 @@
 | **Notificações** | Enviar notificações sobre eventos importantes aos usuários | `+EnviarNotificacao()` |
 
 
-## 5. Interfaces
+## 3. Interfaces
 
 | Interface | Componente | Tipo | Operações |
 |---|---|---|---|
@@ -57,3 +57,8 @@
 | `ITarefa` | Feedback | Requerida | `+MostrarTarefas()` |
 | `INotificacao` | Feedback | Requerida | `+EnviarNotificacao()` |
 | `INotificacao` | TCC | Requerida | `+EnviarNotificacao()` |
+
+
+## 4. Diagrama de Componentes
+
+![componentes](Componentes_artemis.png)
