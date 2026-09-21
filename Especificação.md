@@ -1,6 +1,10 @@
 # Modelagem de Componentes
 
-## 1. Análise dos Fluxos dos Casos de Uso
+## 1. Diagrama de Casos de Uso
+![UC](UC_Artemis.png)
+
+
+## 2. Análise dos Fluxos dos Casos de Uso
 
 ### Aplicar Feedback
 
@@ -26,8 +30,20 @@
 |---|---|---|
 | Agendar Reunião | 1. O aluno realiza o login na plataforma.<br>2. O aluno acessa a opção "Orientadores".<br>3. O sistema apresenta a lista de orientadores cadastrados.<br>4. O aluno verifica as informações dos orientadores, como área de atuação e número de vagas.<br>5. O aluno seleciona um orientador.<br>6. O sistema apresenta as informações do orientador e abre o calendário com os horários disponíveis.<br>7. O aluno seleciona um horário.<br>8. O aluno confirma o agendamento.<br>9. O sistema registra a reunião associada ao aluno e orientador.<br>10. O sistema adiciona a reunião ao calendário.<br>11. O sistema envia uma notificação sobre a reunião para aluno e orientador.<br>12. O sistema confirma o agendamento. | 3: `+ListarOrientadores()`<br>6: `+MostrarAgenda()`<br>9: `+RegistrarReuniao()`<br>11: `+EnviarNotificacao()` |
 
+## 3. Agrupamento das Operações
 
-## 2. Identificação dos Componentes
+Agrupe as operações identificadas de acordo com responsabilidades relacionadas.
+
+| Responsabilidade | Operações relacionadas |
+|---|---|
+| **Gerenciar Orientadores** | `+ListarOrientadores()`, `+VerificarVagas()` |
+| **Gerenciar TCC** | `+CadastrarTCC()`, `+ValidarDadosTCC()`, `+ListarTCCsOrientados()`, `+VerTCC()` |
+| **Gerenciar Feedback** | `+RegistrarFeedback()`, `+ValidarDadosFeedback()` |
+| **Gerenciar Notificações** | `+EnviarNotificacao()` |
+| **Gerenciar Tarefas** | `+MostrarTarefas()`, `+ValidarDadosTarefa()`, `+CriarTarefa()` |
+| **Gerenciar Reuniões** | `+MostrarAgenda()`, `+RegistrarReuniao()` |
+
+## 4. Identificação dos Componentes
 
 | Componente | Responsabilidade | Operações realizadas |
 |---|---|---|
@@ -39,7 +55,7 @@
 | **Notificações** | Enviar notificações sobre eventos importantes aos usuários | `+EnviarNotificacao()` |
 
 
-## 3. Interfaces
+## 5. Interfaces
 
 | Interface | Componente | Tipo | Operações |
 |---|---|---|---|
@@ -59,6 +75,50 @@
 | `INotificacao` | TCC | Requerida | `+EnviarNotificacao()` |
 
 
-## 4. Diagrama de Componentes
+## 6. Dependências entre Componentes
+
+As dependências entre os componentes foram identificadas a partir das interfaces requeridas e fornecidas.
+
+| Componente | Depende de | Interface utilizada | Justificativa |
+|---|---|---|---|
+| **Reunião** | Orientador | `IOrientador` | Necessita consultar os orientadores e suas informações para permitir que o aluno escolha com quem deseja agendar uma reunião. |
+| **Reunião** | Notificação | `INotificacao` | Após o agendamento da reunião, necessita solicitar o envio de notificações ao aluno e ao orientador. |
+| **TCC** | Orientador | `IOrientador` | Necessita listar os orientadores e verificar a existência de vagas antes de enviar uma solicitação de orientação. |
+| **TCC** | Notificação | `INotificacao` | Necessita enviar uma notificação ao orientador solicitando a aprovação do cadastro do TCC com ele como orientador. |
+| **Tarefa** | TCC | `ITCC` | As tarefas são vinculadas a um TCC, sendo necessário acessar as informações do TCC ao criar e visualizar suas tarefas. |
+| **Feedback** | TCC | `ITCC` | O orientador precisa visualizar a lista de TCCs sob sua orientação para selecionar em qual deseja registrar o feedback. |
+| **Feedback** | Tarefa | `ITarefa` | O feedback pode ser associado às tarefas do TCC, sendo necessário visualizar as tarefas para selecionar aquela que será avaliada. |
+| **Feedback** | Notificação | `INotificacao` | Após o registro de um feedback, necessita solicitar o envio de uma notificação ao aluno. |
+
+
+## 7. Diagrama de Componentes
 
 ![componentes](Componentes_artemis.png)
+
+
+## 8. Rastreabilidade da Modelagem
+
+Visão resumida da relação entre os elementos identificados:
+
+**Caso de Uso → Operação → Responsabilidade → Interface → Componente**
+
+| Caso de Uso | Operação | Responsabilidade | Interface | Componente |
+|---|---|---|---|---|
+| **Agendar Reunião** | `ListarOrientadores()` | Consultar orientadores e suas informações | `IOrientador` | Orientador |
+| **Agendar Reunião** | `MostrarAgenda()` | Mostrar o calendário com data e horário para reuniões | `IReuniao` | Reunião |
+| **Agendar Reunião** | `RegistrarReuniao()` | Guardar o agendamento e horário de reuniões | `IReuniao` | Reunião |
+| **Agendar Reunião** | `EnviarNotificacao()` | Enviar notificações sobre reuniões agendadas | `INotificacao` | Notificação |
+| **Aplicar Feedback** | `ListarTCCsOrientados()` | Listar os TCCs orientados pelo orientador | `ITCC` | TCC |
+| **Aplicar Feedback** | `MostrarTarefas()` | Mostrar quadro de tarefas do TCC orientado para escolher em qual o feedback será aplicado | `ITarefa` | Tarefa |
+| **Aplicar Feedback** | `ValidarDadosFeedback()` | Validar os dados do feedback antes do registro | `IFeedback` | Feedback |
+| **Aplicar Feedback** | `RegistrarFeedback()` | Registrar e disponibilizar feedbacks dos orientadores para alunos | `IFeedback` | Feedback |
+| **Aplicar Feedback** | `EnviarNotificacao()` | Enviar notificações sobre feedbacks registrados | `INotificacao` | Notificação |
+| **Criar Tarefa** | `VerTCC()` | Consultar informações do TCC | `ITCC` | TCC |
+| **Criar Tarefa** | `MostrarTarefas()` | Mostrar o quadro de tarefas do TCC | `ITarefa` | Tarefa |
+| **Criar Tarefa** | `ValidarDadosTarefa()` | Validar dados da tarefa a ser criada | `ITarefa` | Tarefa |
+| **Criar Tarefa** | `CriarTarefa()` | Criar e registrar a nova tarefa no quadro | `ITarefa` | Tarefa |
+| **Cadastrar TCC** | `ListarOrientadores()` | Listar os orientadores que estão cadastrados | `IOrientador` | Orientador |
+| **Cadastrar TCC** | `VerificarVagas()` | Verificar a disponibilidade do orientador selecionado | `IOrientador` | Orientador |
+| **Cadastrar TCC** | `ValidarDadosTCC()` | Validar os dados do TCC a ser cadastrado | `ITCC` | TCC |
+| **Cadastrar TCC** | `EnviarNotificacao()` | Enviar notificação solicitando ao professor a aprovação do cadastro do TCC com ele como orientador | `INotificacao` | Notificação |
+| **Cadastrar TCC** | `CadastrarTCC()` | Cadastrar o novo TCC vinculado ao aluno e orientador | `ITCC` | TCC |
