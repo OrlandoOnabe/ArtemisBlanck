@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Login | Gerenciador de TCC</title>
+
+    <link rel="stylesheet" href="../static/css/login.css">
+</head>
+
+<body>
+
+    <main class="login-page">
+
+        <!-- LADO ESQUERDO -->
+        <section class="apresentacao">
+
+            <div class="logo">
+                <div class="logo-simbolo">A</div>
+
+                <div>
+                    <h2>Artemis Blanck</h2>
+                    <span>TCC</span>
+                </div>
+            </div>
+
+            <div class="mensagem">
+                <h1>
+                    Gerencie TCCs com
+                    <span>precisão</span> e clareza.
+                </h1>
+
+                <p>
+                    Plataforma integrada para acompanhamento de
+                    Trabalhos de Conclusão de Curso, conectando
+                    alunos e orientadores em um único ambiente.
+                </p>
+            </div>
+
+        </section>
+
+
+        <!-- LADO DIREITO -->
+        <section class="login-container">
+
+            <div class="login-box">
+
+                <h1>Bem-vindo de volta</h1>
+                <p class="subtitulo">
+                    Acesse sua conta para continuar
+                </p>
+
+                <div class="tipo-usuario">
+
+                    <input
+                        type="radio"
+                        id="aluno"
+                        name="tipo_usuario"
+                        value="ALUNO"
+                        checked
+                    >
+
+                    <label for="aluno">
+                        Aluno
+                    </label>
+
+                    <input
+                        type="radio"
+                        id="orientador"
+                        name="tipo_usuario"
+                        value="ORIENTADOR"
+                    >
+
+                    <label for="orientador">
+                        Orientador
+                    </label>
+
+                </div>
+
+                <form>
+
+                    <div class="campo">
+                        <label for="email">
+                            E-MAIL INSTITUCIONAL
+                        </label>
+
+                        <input
+                            type="email"
+                            id="email"
+                            name="email"
+                            placeholder="nome@universidade.edu.br"
+                        >
+                    </div>
+
+                    <div class="campo">
+                        <label for="senha">
+                            SENHA
+                        </label>
+
+                        <input
+                            type="password"
+                            id="senha"
+                            name="senha"
+                            placeholder="••••••••"
+                        >
+                    </div>
+
+                    <a class="esqueci-senha" href="#">
+                        Esqueceu a senha?
+                    </a>
+
+                    <button class="entrar" type="submit">
+                        Entrar na plataforma
+                    </button>
+
+                </form>
+
+                <div class="separador"></div>
+
+                <p class="primeiro-acesso">
+                    Primeiro acesso?
+                </p>
+
+                <div class="cadastros">
+
+                    <a href="cadastro_aluno.html">
+                        Cadastrar como Aluno
+                    </a>
+
+                    <a href="cadastro_orientador.html">
+                        Cadastrar como Orientador
+                    </a>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+</body>
+</html>
