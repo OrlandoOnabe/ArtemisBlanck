@@ -1,99 +1,116 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Login | Gerenciador de TCC</title>
+    <title>Login | Artemis</title>
 
-    <link rel="stylesheet" href="../static/css/login.css">
+    <link rel="stylesheet" href="/static/css/login.css">
 </head>
 
 <body>
 
-    <main class="login-page">
+    <main class="pagina">
 
-        <!-- LADO ESQUERDO -->
         <section class="apresentacao">
 
             <div class="logo">
                 <div class="logo-simbolo">A</div>
 
                 <div>
-                    <h2>Artemis Blanck</h2>
-                    <span>TCC</span>
+                    <h2>Artemis</h2>
+                    <span>BLANCK</span>
                 </div>
             </div>
 
-            <div class="mensagem">
+            <div class="conteudo-apresentacao">
+
+                <span class="tag">GERENCIAMENTO DE TCC</span>
+
                 <h1>
-                    Gerencie TCCs com
-                    <span>precisão</span> e clareza.
+                    Gerencie TCCs com<br>
+                    precisão e clareza.
                 </h1>
 
                 <p>
-                    Plataforma integrada para acompanhamento de
-                    Trabalhos de Conclusão de Curso, conectando
-                    alunos e orientadores em um único ambiente.
+                    Uma plataforma para aproximar alunos e orientadores
+                    durante o desenvolvimento do Trabalho de Conclusão de Curso.
                 </p>
+
             </div>
 
         </section>
 
 
-        <!-- LADO DIREITO -->
         <section class="login-container">
 
-            <div class="login-box">
+            <div class="login-conteudo">
 
                 <h1>Bem-vindo de volta</h1>
-                <p class="subtitulo">
-                    Acesse sua conta para continuar
-                </p>
+                <br>
 
-                <div class="tipo-usuario">
+                <form action="/login" method="post">
+                    {% if erro %}
+                        <div class="mensagem-erro">
+                            {{ erro }}
+                        </div>
+                    {% endif %}
 
-                    <input
-                        type="radio"
-                        id="aluno"
-                        name="tipo_usuario"
-                        value="ALUNO"
-                        checked
-                    >
-
-                    <label for="aluno">
-                        Aluno
+                    <label class="titulo-campo">
+                        TIPO DE USUÁRIO
                     </label>
 
-                    <input
-                        type="radio"
-                        id="orientador"
-                        name="tipo_usuario"
-                        value="ORIENTADOR"
-                    >
+                    <div class="tipo-usuario">
 
-                    <label for="orientador">
-                        Orientador
-                    </label>
+                        <input
+                            type="radio"
+                            id="aluno"
+                            name="tipo_usuario"
+                            value="ALUNO"
+                            checked
+                        >
 
-                </div>
+                        <label for="aluno">
+                            Aluno
+                        </label>
 
-                <form>
+
+                        <input
+                            type="radio"
+                            id="orientador"
+                            name="tipo_usuario"
+                            value="ORIENTADOR"
+                        >
+
+                        <label for="orientador">
+                            Orientador
+                        </label>
+
+                    </div>
+
 
                     <div class="campo">
+
                         <label for="email">
                             E-MAIL INSTITUCIONAL
                         </label>
 
                         <input
                             type="email"
-                            id="email"
                             name="email"
-                            placeholder="nome@universidade.edu.br"
+                            placeholder="email@fei.edu.br"
+                            pattern="^[^@\s]+@[^@\s]+\.[^@\s]+$"
+                            title="Digite um e-mail válido, como nome@dominio.com"
+                            required
                         >
+
                     </div>
 
+
                     <div class="campo">
+
                         <label for="senha">
                             SENHA
                         </label>
@@ -103,32 +120,33 @@
                             id="senha"
                             name="senha"
                             placeholder="••••••••"
+                            maxlength="50"
+                            required
                         >
+
                     </div>
 
-                    <a class="esqueci-senha" href="#">
-                        Esqueceu a senha?
-                    </a>
 
-                    <button class="entrar" type="submit">
+
+                    <button type="submit" class="botao-entrar">
                         Entrar na plataforma
                     </button>
 
                 </form>
 
-                <div class="separador"></div>
 
-                <p class="primeiro-acesso">
-                    Primeiro acesso?
-                </p>
+                <div class="divisor">
+                    <span>Primeiro acesso?</span>
+                </div>
+
 
                 <div class="cadastros">
 
-                    <a href="cadastro_aluno.html">
+                    <a href="/cadastro/aluno">
                         Cadastrar como Aluno
                     </a>
 
-                    <a href="cadastro_orientador.html">
+                    <a href="/cadastro/orientador">
                         Cadastrar como Orientador
                     </a>
 
@@ -141,4 +159,5 @@
     </main>
 
 </body>
+
 </html>
