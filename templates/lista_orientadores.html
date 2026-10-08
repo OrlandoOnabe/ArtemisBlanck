@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Orientadores | Artemis</title>
+
+    <link rel="stylesheet" href="/static/css/lista_orientadores.css">
+</head>
+
+<body>
+
+    <header>
+
+        <a href="/central/aluno" class="logo">
+            <div class="logo-simbolo">A</div>
+
+            <div>
+                <h2>Artemis</h2>
+                <span>BLANCK</span>
+            </div>
+        </a>
+
+
+        <nav>
+            <a href="/central/aluno">Início</a>
+            <a href="/orientadores" class="ativo">Orientadores</a>
+            <a href="/logout">Sair</a>
+        </nav>
+
+    </header>
+
+
+    <main class="container">
+
+        <section class="cabecalho-pagina">
+
+            <span class="tag">ORIENTAÇÃO</span>
+
+            <h1>Orientadores</h1>
+
+            <br>
+
+        </section>
+
+
+        <section class="secao">
+
+            <div class="titulo-secao">
+                <div>
+                    <span class="numero">01</span>
+                    <h2>Orientadores disponíveis</h2>
+                </div>
+            </div>
+
+
+            <div class="lista-orientadores">
+
+                {% if orientadores %}
+
+                    {% for orientador in orientadores %}
+
+                        <a href="/orientador/{{ orientador.usuario_id }}"
+                           class="orientador-card">
+
+                            <div class="avatar">
+                                {{ orientador.usuario.nome[0] }}
+                            </div>
+
+                            <div class="dados-orientador">
+
+                                <h3>
+                                    {{ orientador.usuario.nome }}
+                                </h3>
+
+                                <span class="area">
+                                    {{ orientador.area_atuacao }}
+                                </span>
+
+                            </div>
+
+
+                            <div class="vagas">
+                                <span>VAGAS</span>
+
+                                <strong>
+                                    {{ orientador.vagas }}
+                                </strong>
+                            </div>
+
+
+                            <div class="seta">
+                                →
+                            </div>
+
+                        </a>
+
+                    {% endfor %}
+
+                {% else %}
+
+                    <div class="estado-vazio">
+                        <h3>Nenhum orientador cadastrado</h3>
+
+                        <p>
+                            Não existem orientadores disponíveis no momento.
+                        </p>
+                    </div>
+
+                {% endif %}
+
+            </div>
+
+        </section>
+
+    </main>
+
+</body>
+</html>
