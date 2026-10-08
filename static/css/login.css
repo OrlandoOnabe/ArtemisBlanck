@@ -5,262 +5,187 @@
 }
 
 body {
-    font-family: Arial, sans-serif;
-    background: #0d1421;
-    color: #f5f5f5;
-}
-
-/* Página inteira */
-
-.login-page {
     min-height: 100vh;
-    display: flex;
+    background: #0c1119;
+    color: #f5f5f5;
+    font-family: Arial, sans-serif;
 }
 
-
-/* =========================
-   LADO ESQUERDO
-   ========================= */
+.pagina {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1.4fr 0.8fr;
+}
 
 .apresentacao {
-    width: 78%;
-    min-height: 100vh;
-
-    padding: 50px 60px;
-
     position: relative;
-
+    display: flex;
+    flex-direction: column;
+    padding: 45px 60px;
     background-color: #0d1628;
-
-    /* Grid sutil */
     background-image:
         linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
         linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
-
-    background-size: 55px 55px;
+    background-size: 40px 40px;
+    border-right: 1px solid #28303c;
 }
-
-
-/* Logo */
 
 .logo {
     display: flex;
     align-items: center;
-    gap: 12px;
+    gap: 10px;
 }
 
 .logo-simbolo {
-    width: 45px;
-    height: 45px;
-
-    border: 1px solid #c9aa52;
-    border-radius: 50%;
-
+    width: 38px;
+    height: 38px;
     display: flex;
     align-items: center;
     justify-content: center;
-
+    border: 1px solid #c9aa52;
+    border-radius: 50%;
     color: #c9aa52;
-
     font-family: Georgia, serif;
-    font-size: 22px;
+    font-size: 18px;
 }
 
 .logo h2 {
     font-family: Georgia, serif;
-    font-size: 28px;
+    font-size: 21px;
+    font-weight: normal;
 }
 
 .logo span {
+    display: block;
     color: #c9aa52;
-
-    font-size: 10px;
-    letter-spacing: 4px;
+    font-size: 8px;
+    letter-spacing: 3px;
 }
 
-
-/* Mensagem principal */
-
-.mensagem {
-    position: absolute;
-
-    top: 50%;
-    left: 60px;
-
-    transform: translateY(-50%);
-
-    max-width: 500px;
+.conteudo-apresentacao {
+    margin: auto 0;
+    max-width: 620px;
 }
 
-.mensagem h1 {
+.tag {
+    display: inline-block;
+    padding: 7px 13px;
+    margin-bottom: 24px;
+    border: 1px solid #443d28;
+    border-radius: 20px;
+    background: #1c1c18;
+    color: #c9aa52;
+    font-size: 9px;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+.conteudo-apresentacao h1 {
     font-family: Georgia, serif;
-    font-size: 38px;
+    font-size: 48px;
+    line-height: 1.15;
     font-weight: normal;
-
-    line-height: 1.25;
-
-    margin-bottom: 25px;
+    margin-bottom: 20px;
 }
 
-.mensagem h1 span {
-    color: #c9aa52;
-}
-
-.mensagem p {
-    max-width: 420px;
-
-    color: #75819a;
-
+.conteudo-apresentacao p {
+    max-width: 520px;
+    color: #7e899e;
     font-size: 14px;
     line-height: 1.7;
 }
 
-
-/* =========================
-   LOGIN
-   ========================= */
-
 .login-container {
-    width: 22%;
-    min-width: 390px;
-
-    background: #171d27;
-
     display: flex;
     align-items: center;
     justify-content: center;
-
     padding: 40px;
+    background: #0c1119;
 }
 
-.login-box {
+.login-conteudo {
     width: 100%;
     max-width: 390px;
 }
 
-.login-box h1 {
+.login-conteudo > h1 {
     font-family: Georgia, serif;
-    font-size: 27px;
-
-    margin-bottom: 6px;
+    font-size: 29px;
+    font-weight: normal;
+    margin-bottom: 8px;
 }
 
 .subtitulo {
-    color: #7d899e;
-
-    font-size: 13px;
-
-    margin-bottom: 35px;
+    color: #75819a;
+    font-size: 12px;
+    margin-bottom: 30px;
 }
 
-
-/* Aluno / Orientador */
-
-.tipo-usuario {
-    display: flex;
-
-    background: #222a39;
-
-    border-radius: 5px;
-
-    padding: 3px;
-
-    margin-bottom: 28px;
-}
-
-.tipo {
-    flex: 1;
-
-    padding: 9px;
-
-    border: none;
-    border-radius: 4px;
-
-    background: transparent;
-
-    color: #8993a6;
-
-    cursor: pointer;
+.titulo-campo,
+.campo label {
+    display: block;
+    color: #8995ad;
+    font-size: 10px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    margin-bottom: 8px;
 }
 
 .tipo-usuario {
     display: flex;
-
-    background: #222a39;
-    border-radius: 5px;
-
-    padding: 3px;
-
-    margin-bottom: 28px;
+    background: #171d27;
+    border: 1px solid #2a3240;
+    border-radius: 6px;
+    padding: 4px;
+    margin-bottom: 24px;
 }
-
-/* Esconde a bolinha do radio */
 
 .tipo-usuario input {
     display: none;
 }
 
-/* Aparência dos botões */
-
 .tipo-usuario label {
     flex: 1;
-
-    padding: 9px;
-
+    padding: 10px;
     text-align: center;
-
-    color: #8993a6;
-
+    color: #8995ad;
     border-radius: 4px;
-
     cursor: pointer;
+    font-size: 12px;
 }
-
-/* O selecionado fica dourado */
 
 .tipo-usuario input:checked + label {
     background: #c9aa52;
-    color: #15191f;
-
+    color: #11151c;
     font-weight: bold;
 }
-
-/* Campos */
 
 .campo {
     margin-bottom: 20px;
 }
 
-.campo label {
-    display: block;
-
-    color: #8490a6;
-
-    font-size: 11px;
-    font-weight: bold;
-
-    letter-spacing: 1px;
-
-    margin-bottom: 8px;
-}
-
 .campo input {
     width: 100%;
-
     padding: 14px;
-
-    background: #222a39;
-
-    border: 1px solid #293243;
+    background: #171d27;
+    border: 1px solid #2b3547;
     border-radius: 6px;
-
-    color: white;
-
+    color: #f5f5f5;
+    font-size: 13px;
     outline: none;
 }
 
 .campo input::placeholder {
-    color: #778196;
+    color: #687386;
+}
+
+.campo input:focus {
+    border-color: #c9aa52;
+}
+
+.campo input:valid,
+.campo input:invalid {
+    border-color: #2b3547;
 }
 
 .campo input:focus {
@@ -268,66 +193,54 @@ body {
 }
 
 
-/* Esqueceu senha */
-
-.esqueci-senha {
-    display: block;
-
-    text-align: right;
-
-    color: #c9aa52;
-
-    text-decoration: none;
-
-    font-size: 11px;
-
+.opcoes {
+    display: flex;
+    justify-content: flex-end;
     margin-top: -7px;
-    margin-bottom: 28px;
+    margin-bottom: 22px;
 }
 
+.opcoes a {
+    color: #c9aa52;
+    text-decoration: none;
+    font-size: 10px;
+}
 
-/* Botão entrar */
+.opcoes a:hover {
+    text-decoration: underline;
+}
 
-.entrar {
+.botao-entrar {
     width: 100%;
-
     padding: 14px;
-
-    border: none;
-    border-radius: 5px;
-
     background: #c9aa52;
-
-    color: #111722;
-
+    border: none;
+    border-radius: 6px;
+    color: #11151c;
+    font-size: 12px;
     font-weight: bold;
-
     cursor: pointer;
 }
 
-.entrar:hover {
+.botao-entrar:hover {
     background: #d8ba62;
 }
 
-
-/* Parte inferior */
-
-.separador {
-    height: 1px;
-
-    background: #29303d;
-
-    margin: 35px 0 25px;
+.divisor {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin: 28px 0 18px;
+    color: #606b7e;
+    font-size: 9px;
 }
 
-.primeiro-acesso {
-    text-align: center;
-
-    color: #748097;
-
-    font-size: 11px;
-
-    margin-bottom: 14px;
+.divisor::before,
+.divisor::after {
+    content: "";
+    flex: 1;
+    height: 1px;
+    background: #28303c;
 }
 
 .cadastros {
@@ -337,42 +250,50 @@ body {
 
 .cadastros a {
     flex: 1;
-
-    padding: 10px;
-
-    text-align: center;
-
-    border: 1px solid #303847;
+    padding: 11px;
+    border: 1px solid #2a3240;
     border-radius: 5px;
-
-    color: #e7e7e7;
-
-    font-size: 11px;
-    font-weight: bold;
-
+    color: #8995ad;
+    text-align: center;
     text-decoration: none;
+    font-size: 10px;
+    transition: 0.2s;
 }
 
 .cadastros a:hover {
     border-color: #c9aa52;
+    color: #c9aa52;
 }
 
+.mensagem-erro {
+    padding: 12px 14px;
+    margin-bottom: 18px;
+    background: #2a181b;
+    border: 1px solid #7d353b;
+    border-radius: 6px;
+    color: #e88990;
+    font-size: 12px;
+}
 
-/* =========================
-   RESPONSIVIDADE
-   ========================= */
-
-@media (max-width: 900px) {
+@media (max-width: 850px) {
+    .pagina {
+        display: block;
+    }
 
     .apresentacao {
-        display: none;
+        min-height: 320px;
+        padding: 35px;
+    }
+
+    .conteudo-apresentacao {
+        margin-top: 70px;
+    }
+
+    .conteudo-apresentacao h1 {
+        font-size: 36px;
     }
 
     .login-container {
-        width: 100%;
-        min-width: 0;
-
-        min-height: 100vh;
+        padding: 50px 25px;
     }
-
 }
