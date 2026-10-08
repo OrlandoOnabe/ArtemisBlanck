@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Orientador | Artemis</title>
+
+    <link rel="stylesheet" href="/static/css/orientador.css">
+</head>
+
+<body>
+
+    <header>
+
+        <a href="/central/aluno" class="logo">
+
+            <div class="logo-simbolo">A</div>
+
+            <div>
+                <h2>Artemis</h2>
+                <span>BLANCK</span>
+            </div>
+
+        </a>
+
+
+        <nav>
+            <a href="/central/aluno">Início</a>
+            <a href="/orientadores" class="ativo">Orientadores</a>
+            <a href="/logout">Sair</a>
+        </nav>
+
+    </header>
+
+
+    <main class="container">
+
+        <a href="/orientadores" class="voltar">
+            ← Voltar para orientadores
+        </a>
+
+
+        <section class="perfil-orientador">
+
+            <div class="avatar avatar-grande">
+                {{ usuario.nome[0] }}
+            </div>
+
+
+            <div class="perfil-titulo">
+
+                <span class="tag">
+                    ORIENTADOR
+                </span>
+
+                <h1>
+                    {{ usuario.nome }}
+                </h1>
+
+                <p>
+                    {{ orientador.area_atuacao }}
+                </p>
+
+            </div>
+
+
+            <div class="vagas-destaque">
+
+                <span>VAGAS DISPONÍVEIS</span>
+
+                <strong>{{ orientador.vagas }}</strong>
+
+            </div>
+
+        </section>
+
+
+        <section class="secao">
+
+            <div class="titulo-secao">
+
+                <div>
+                    <span class="numero">01</span>
+                    <h2>Informações do orientador</h2>
+                </div>
+
+            </div>
+
+
+            <div class="card informacoes">
+
+                <div class="info">
+                    <span>NOME COMPLETO</span>
+                    <strong>{{ usuario.nome }}</strong>
+                </div>
+
+                <div class="info">
+                    <span>E-MAIL INSTITUCIONAL</span>
+                    <strong>{{ usuario.email }}</strong>
+                </div>
+
+                <div class="info">
+                    <span>ÁREA DE ATUAÇÃO</span>
+                    <strong>{{ orientador.area_atuacao }}</strong>
+                </div>
+
+                <div class="info">
+                    <span>VAGAS PARA ORIENTAÇÃO</span>
+                    <strong>{{ orientador.vagas }} vagas disponíveis</strong>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <section class="secao">
+
+            <div class="card solicitar-card">
+
+                <div>
+                    <h2>Agende uma reunião</h2>
+
+                    <p>
+                        Consulte a agenda deste orientador
+                        e escolha um horário disponível.
+                    </p>
+                </div>
+
+                <a
+                    href="/orientador/{{ usuario.id }}/agenda"
+                    class="botao-principal"
+                >
+                    Ver horários disponíveis
+                </a>
+
+            </div>
+
+        </section>
+
+        {% if reunioes %}
+
+        <section class="secao">
+
+            <h2>Suas reuniões com este orientador</h2>
+
+            {% for reuniao in reunioes %}
+
+            <div class="card reuniao-card">
+
+                <div>
+                    <span class="tag">REUNIÃO AGENDADA</span>
+
+                    <h3>
+                        {{ reuniao.data }}
+                    </h3>
+
+                    <p>
+                        Horário:
+                        {{ reuniao.hora_inicio }}
+                        até
+                        {{ reuniao.hora_fim }}
+                    </p>
+                </div>
+
+            </div>
+
+            {% endfor %}
+
+        </section>
+
+        {% endif %}
+
+    </main>
+
+</body>
+</html>
