@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Página Principal | Artemis</title>
+
+    <link rel="stylesheet" href="/static/css/central_orientador.css">
+</head>
+
+<body>
+
+    <header>
+        <a href="/central/orientador" class="logo">
+            <div class="logo-simbolo">A</div>
+
+            <div>
+                <h2>Artemis</h2>
+                <span>BLANCK</span>
+            </div>
+        </a>
+
+        <nav>
+            <a href="/central/orientador" class="ativo">Início</a>
+            <a href="/logout">Sair</a>
+        </nav>
+    </header>
+
+
+    <main class="container">
+
+        <section class="boas-vindas">
+
+            <div>
+                <span class="tag">ÁREA DO ORIENTADOR</span>
+
+                <h1>Olá, {{ usuario.nome }}</h1>
+
+                <br>
+            </div>
+
+        </section>
+
+
+        <section class="secao">
+
+            <div class="titulo-secao">
+                <div>
+                    <span class="numero">01</span>
+                    <h2>Minhas informações</h2>
+                </div>
+            </div>
+
+
+            <div class="card informacoes">
+
+                <div class="info">
+                    <span>NOME COMPLETO</span>
+                    <strong>{{ usuario.nome }}</strong>
+                </div>
+
+                <div class="info">
+                    <span>E-MAIL INSTITUCIONAL</span>
+                    <strong>{{ usuario.email }}</strong>
+                </div>
+
+                <div class="info">
+                    <span>TELEFONE</span>
+                    <strong>{{ usuario.telefone }}</strong>
+                </div>
+
+                <div class="info">
+                    <span>ÁREA DE ATUAÇÃO</span>
+                    <strong>{{ orientador.area_atuacao }}</strong>
+                </div>
+
+                <div class="info">
+                    <span>VAGAS PARA ORIENTAÇÃO</span>
+                    <strong>{{ orientador.vagas }} vagas</strong>
+                </div>
+
+                <div class="info">
+                    <span>TIPO DE USUÁRIO</span>
+                    <strong>Orientador</strong>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <section class="secao">
+
+            <div class="titulo-secao">
+                <div>
+                    <span class="numero">02</span>
+                    <h2>TCCs orientados</h2>
+                </div>
+            </div>
+
+
+            <div class="card estado-vazio">
+
+                <div class="icone-vazio">
+                    TCC
+                </div>
+
+                <h3>Nenhum TCC vinculado</h3>
+
+
+            </div>
+
+        </section>
+
+        <section class="secao">
+
+            <div class="card">
+
+                <div>
+                    <h2>Google Calendar</h2>
+
+                    <p>
+                        Conecte seu Google Calendar para permitir
+                        o agendamento de reuniões.
+                    </p>
+                </div>
+
+                <a
+                    href="/google/conectar"
+                    class="botao-principal"
+                >
+                    Conectar Google Calendar
+                </a>
+
+            </div>
+
+        </section>
+
+    </main>
+
+</body>
+
+</html>
