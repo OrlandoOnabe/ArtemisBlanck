@@ -103,12 +103,10 @@ Após a escolha de um horário disponível, o evento é criado no Google Calenda
 ```text
 backend/
 ├── componentes/
-│   ├── __init__.py
 │   ├── orientador.py
 │   └── reuniao.py
 │
 ├── interfaces/
-│   ├── __init__.py
 │   ├── iorientador.py
 │   └── ireuniao.py
 │
@@ -118,7 +116,6 @@ backend/
 └── main.py
 
 tests/
-├── __init__.py
 ├── test_orientador.py
 ├── test_reuniao.py
 └── test_integracao.py
