@@ -72,6 +72,31 @@ Dessa forma, o componente Reunião pode utilizar as operações disponibilizadas
 
 ---
 
+## Configuração do Supabase
+
+Para executar o sistema, é necessário possuir um projeto no Supabase.
+
+No arquivo:
+
+```text
+codigo/backend/cadastro.py
+```
+
+substitua os valores de `SUPABASE_URL` e `SUPABASE_KEY` pelas credenciais do seu projeto Supabase:
+
+```python
+SUPABASE_URL = "URL_DO_SEU_SUPABASE"
+SUPABASE_KEY = "KEY_DO_SEU_SUPABASE"
+```
+
+A URL e a chave podem ser obtidas nas configurações do projeto no Supabase.
+
+Por questões de segurança, as credenciais reais utilizadas durante o desenvolvimento não estão incluídas no repositório.
+
+
+---
+
+
 ## Integração com Google Calendar
 
 O sistema utiliza a API do Google Calendar para consultar a disponibilidade dos orientadores e criar os eventos correspondentes às reuniões.
