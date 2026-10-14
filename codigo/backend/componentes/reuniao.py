@@ -1,6 +1,5 @@
 from backend.cadastro import supabase
 from backend.google_calendar import gerar_horarios_disponiveis
-
 from backend.interfaces.ireuniao import IReuniao
 from backend.interfaces.iorientador import IOrientador
 
@@ -12,10 +11,17 @@ class Reuniao(IReuniao):
 
 
     def mostrar_agenda(self, orientador_id, data):
-        return gerar_horarios_disponiveis(
-            orientador_id,
-            data
+        orientadores = self.orientador.listar_orientadores()
+
+        orientador_existe = any(
+            orientador["usuario_id"] == orientador_id
+            for orientador in orientadores
         )
+
+        if not orientador_existe:
+            return None
+
+        return gerar_horarios_disponiveis(orientador_id, data)
 
 
     def registrar_reuniao(self, aluno_id, orientador_id, data, hora_inicio, hora_fim, google_event_id=None):
