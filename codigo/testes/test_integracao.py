@@ -11,8 +11,8 @@ def test_integracao_reuniao_orientador():
             "area_atuacao": "Inteligência Artificial",
             "vagas": 2,
             "usuario": {
-                "nome": "Carlos",
-                "email": "carlos@fei.edu.br"
+                "nome": "Orlando",
+                "email": "orlando@fei.edu.br"
             }
         }
     ]
