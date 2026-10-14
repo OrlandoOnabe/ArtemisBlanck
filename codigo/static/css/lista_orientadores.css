@@ -1,0 +1,242 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    background: #0c1119;
+    color: #f5f5f5;
+    font-family: Arial, sans-serif;
+}
+
+header {
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 45px;
+    border-bottom: 1px solid #28303c;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #f5f5f5;
+    text-decoration: none;
+}
+
+.logo-simbolo {
+    width: 35px;
+    height: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #c9aa52;
+    border-radius: 50%;
+    color: #c9aa52;
+    font-family: Georgia, serif;
+}
+
+.logo h2 {
+    font-family: Georgia, serif;
+    font-size: 20px;
+}
+
+.logo span {
+    display: block;
+    color: #c9aa52;
+    font-size: 8px;
+    letter-spacing: 3px;
+}
+
+nav {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+
+nav a {
+    color: #8995ad;
+    text-decoration: none;
+    font-size: 12px;
+    transition: 0.2s;
+}
+
+nav a:hover {
+    color: #f5f5f5;
+}
+
+nav a.ativo {
+    color: #c9aa52;
+}
+
+.container {
+    width: 100%;
+    max-width: 1000px;
+    margin: auto;
+    padding: 55px 30px 80px;
+}
+
+.cabecalho-pagina {
+    margin-bottom: 50px;
+}
+
+.tag {
+    display: inline-block;
+    padding: 7px 13px;
+    border: 1px solid #443d28;
+    border-radius: 20px;
+    background: #1c1c18;
+    color: #c9aa52;
+    font-size: 10px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    margin-bottom: 15px;
+}
+
+.cabecalho-pagina h1 {
+    font-family: Georgia, serif;
+    font-size: 36px;
+    font-weight: normal;
+    margin-bottom: 10px;
+}
+
+.cabecalho-pagina p {
+    color: #7e899e;
+    font-size: 13px;
+    line-height: 1.6;
+}
+
+.secao {
+    margin-bottom: 45px;
+}
+
+.titulo-secao {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+}
+
+.titulo-secao > div {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.numero {
+    color: #c9aa52;
+    font-family: Georgia, serif;
+    font-size: 13px;
+}
+
+.titulo-secao h2 {
+    font-family: Georgia, serif;
+    font-size: 20px;
+    font-weight: normal;
+}
+
+.lista-orientadores {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.orientador-card {
+    display: flex;
+    align-items: center;
+    padding: 20px 24px;
+    background: #171d27;
+    border: 1px solid #2a3240;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: 0.2s;
+}
+
+.orientador-card:hover {
+    border-color: #c9aa52;
+    transform: translateY(-2px);
+}
+
+.avatar {
+    width: 48px;
+    height: 48px;
+    min-width: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #514a32;
+    border-radius: 50%;
+    background: #1d1e1b;
+    color: #c9aa52;
+    font-family: Georgia, serif;
+}
+
+.dados-orientador {
+    flex: 1;
+    margin-left: 18px;
+}
+
+.dados-orientador h3 {
+    color: #e7e9ed;
+    font-family: Georgia, serif;
+    font-size: 16px;
+    font-weight: normal;
+    margin-bottom: 5px;
+}
+
+.area {
+    color: #778196;
+    font-size: 11px;
+}
+
+.vagas {
+    min-width: 80px;
+    text-align: center;
+}
+
+.vagas span {
+    display: block;
+    color: #69758a;
+    font-size: 8px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    margin-bottom: 4px;
+}
+
+.vagas strong {
+    color: #c9aa52;
+    font-family: Georgia, serif;
+    font-size: 20px;
+}
+
+.seta {
+    color: #687488;
+    font-size: 20px;
+    margin-left: 20px;
+}
+
+.orientador-card:hover .seta {
+    color: #c9aa52;
+}
+
+@media (max-width: 650px) {
+    header {
+        padding: 0 20px;
+    }
+
+    nav {
+        gap: 15px;
+    }
+
+    .container {
+        padding: 40px 20px;
+    }
+
+    .orientador-card {
+        padding: 16px;
+    }
+}

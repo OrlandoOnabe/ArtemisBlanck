@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Página do aluno</title>
+
+    <link rel="stylesheet" href="/static/css/central_aluno.css">
+</head>
+
+<body>
+
+    <header>
+        <a href="/central/aluno" class="logo">
+            <div class="logo-simbolo">A</div>
+
+            <div>
+                <h2>Artemis</h2>
+                <span>BLANCK</span>
+            </div>
+        </a>
+
+        <nav>
+            <a href="/central/aluno" class="ativo">Início</a>
+            <a href="/orientadores">Orientadores</a>
+            <a href="/logout">Sair</a>
+        </nav>
+    </header>
+
+
+    <main class="container">
+
+        <section class="boas-vindas">
+            <div>
+                <span class="tag">ÁREA DO ALUNO</span>
+
+                <h1>Olá, {{ usuario.nome }}</h1>
+                <br>
+            </div>
+        </section>
+
+
+        <section class="secao">
+
+            <div class="titulo-secao">
+                <div>
+                    <span class="numero">01</span>
+                    <h2>Minhas informações</h2>
+                </div>
+            </div>
+
+
+            <div class="card informacoes">
+
+                <div class="info">
+                    <span>NOME COMPLETO</span>
+                    <strong>{{ usuario.nome }}</strong>
+                </div>
+
+                <div class="info">
+                    <span>RA</span>
+                    <strong>{{ aluno.ra }}</strong>
+                </div>
+
+                <div class="info">
+                    <span>E-MAIL INSTITUCIONAL</span>
+                    <strong>{{ usuario.email }}</strong>
+                </div>
+
+                <div class="info">
+                    <span>TELEFONE</span>
+                    <strong>{{ usuario.telefone }}</strong>
+                </div>
+
+                <div class="info">
+                    <span>TIPO DE USUÁRIO</span>
+                    <strong>Aluno</strong>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <section class="secao">
+
+            <div class="titulo-secao">
+                <div>
+                    <span class="numero">02</span>
+                    <h2>Meu TCC</h2>
+                </div>
+            </div>
+
+
+            <div class="card estado-vazio">
+
+                <div class="icone-vazio">
+                    TCC
+                </div>
+
+                <h3>Nenhum TCC cadastrado</h3>
+
+                <br>
+
+                <button class="botao-principal" disabled>
+                    Cadastrar TCC
+                </button>
+
+
+            </div>
+
+        </section>
+
+    </main>
+
+</body>
+
+</html>

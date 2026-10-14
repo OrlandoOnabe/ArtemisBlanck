@@ -1,0 +1,11 @@
+fastapi
+uvicorn
+jinja2
+python-multipart
+supabase
+bcrypt
+itsdangerous
+google-api-python-client
+google-auth
+google-auth-oauthlib
+google-auth-httplib2

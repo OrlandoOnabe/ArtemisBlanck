@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+
+    <title>Agenda | Artemis</title>
+
+    <link
+        rel="stylesheet"
+        href="/static/css/orientador.css"
+    >
+</head>
+
+<body>
+
+    <main class="container">
+
+        <a
+            href="/orientador/{{ orientador_id }}"
+            class="voltar"
+        >
+            ← Voltar
+        </a>
+
+        <section class="secao">
+
+            <span class="tag">AGENDA</span>
+
+            <h1>
+                Agendar reunião com {{ orientador.nome }}
+            </h1>
+
+            <form
+                action="/orientador/{{ orientador_id }}/agenda"
+                method="get"
+            >
+
+                <label>
+                    Escolha uma data
+                </label>
+
+                <input
+                    type="date"
+                    name="data"
+                    value="{{ data }}"
+                    required
+                >
+
+                <button type="submit">
+                    Consultar horários
+                </button>
+
+            </form>
+
+        </section>
+
+
+        {% if not calendar_conectado %}
+
+            <section class="secao">
+
+                <p>
+                    Este orientador ainda não disponibilizou
+                    sua agenda para agendamento.
+                </p>
+
+            </section>
+
+
+        {% elif horarios is not none %}
+
+            <section class="secao">
+
+                <h2>Horários disponíveis</h2>
+
+                {% if horarios %}
+
+                    {% for horario in horarios %}
+
+                        <form
+                            action="/orientador/{{ orientador_id }}/agendar"
+                            method="post"
+                        >
+
+                            <input
+                                type="hidden"
+                                name="data"
+                                value="{{ data }}"
+                            >
+
+                            <input
+                                type="hidden"
+                                name="hora"
+                                value="{{ horario }}"
+                            >
+
+                            <button
+                                type="submit"
+                                class="botao-principal"
+                            >
+                                {{ horario }}
+                            </button>
+
+                        </form>
+
+                    {% endfor %}
+
+                {% else %}
+
+                    <p>
+                        Não existem horários disponíveis
+                        nesta data.
+                    </p>
+
+                {% endif %}
+
+            </section>
+
+        {% endif %}
+
+    </main>
+
+</body>
+
+</html>

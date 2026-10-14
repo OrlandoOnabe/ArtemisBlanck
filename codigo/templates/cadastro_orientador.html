@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Cadastro de Orientador | Artemis</title>
+
+    <link rel="stylesheet" href="/static/css/cadastro_orientador.css">
+</head>
+
+<body>
+
+    <header>
+
+        <a href="/login" class="logo">
+
+            <div class="logo-simbolo">
+                A
+            </div>
+
+            <div>
+                <h2>Artemis</h2>
+                <span>BLANCK</span>
+            </div>
+
+        </a>
+
+    </header>
+
+
+    <main>
+
+        <section class="cadastro-container">
+
+            <div class="tag">
+                ● Cadastro de Orientador
+            </div>
+
+            <h1>Crie sua conta</h1>
+
+            <br>
+
+            {% if sucesso %}
+                <div class="mensagem-sucesso">
+                    {{ sucesso }}
+                </div>
+            {% endif %}
+
+            <form
+                class="formulario"
+                action="/cadastro/orientador"
+                method="post"
+            >
+
+                <div class="campo">
+
+                    <label for="nome">
+                        NOME COMPLETO
+                    </label>
+
+                    <input
+                        type="text"
+                        id="nome"
+                        name="nome"
+                        placeholder="nome"
+                        maxlength="100"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="linha">
+
+                    <div class="campo">
+
+                        <label for="cpf">
+                            CPF
+                        </label>
+
+                        <input
+                            type="text"
+                            id="cpf"
+                            name="cpf"
+                            placeholder="000.000.000-00"
+                            pattern="[0-9]{3}\.[0-9]{3}\.[0-9]{3}-[0-9]{2}"
+                            maxlength="14"
+                            title="Digite o CPF no formato 000.000.000-00"
+                            required
+                        >
+                        <p class="erro-campo" id="erro-cpf">
+                            {% if campo_erro == "cpf" %}
+                                {{ erro }}
+                            {% endif %}
+                        </p>
+                    </div>
+
+
+                    <div class="campo">
+
+                        <label for="telefone">
+                            TELEFONE
+                        </label>
+
+                        <input
+                            type="tel"
+                            id="telefone"
+                            name="telefone"
+                            placeholder="(11) 99999-0000"
+                            pattern="\([0-9]{2}\) [0-9]{5}-[0-9]{4}"
+                            maxlength="15"
+                            title="Digite o telefone no formato (11) 99999-0000"
+                            required
+                        >
+                        <p class="erro-campo" id="erro-telefone">
+                            {% if campo_erro == "telefone" %}
+                                {{ erro }}
+                            {% endif %}
+                        </p>
+                    </div>
+
+                </div>
+
+
+                <div class="campo">
+
+                    <label for="email">
+                        E-MAIL INSTITUCIONAL
+                    </label>
+
+                    <input
+                        type="email"
+                        name="email"
+                        placeholder="email@fei.edu.br"
+                        pattern="^[^@\s]+@[^@\s]+\.[^@\s]+$"
+                        title="Digite um e-mail válido, como nome@dominio.com"
+                        required
+                    >
+                    <p class="erro-campo" id="erro-email">
+                        {% if campo_erro == "email" %}
+                            {{ erro }}
+                        {% endif %}
+                    </p>
+
+                </div>
+
+
+                <div class="linha">
+
+                    <div class="campo">
+
+                        <label for="area_atuacao">
+                            ÁREA DE ATUAÇÃO
+                        </label>
+
+                        <select
+                            id="area_atuacao"
+                            name="area_atuacao"
+                            required
+                        >
+
+                            <option value="" selected disabled>
+                                Selecione uma área
+                            </option>
+
+                            <option value="Inteligência Artificial">
+                                Inteligência Artificial
+                            </option>
+
+                            <option value="Engenharia de Software">
+                                Engenharia de Software
+                            </option>
+
+                            <option value="Sistemas Distribuídos">
+                                Sistemas Distribuídos
+                            </option>
+
+                            <option value="Banco de Dados">
+                                Banco de Dados
+                            </option>
+
+                            <option value="Redes de Computadores">
+                                Redes de Computadores
+                            </option>
+
+                            <option value="Computação Gráfica">
+                                Computação Gráfica
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <div class="campo">
+
+                        <label for="vagas">
+                            VAGAS PARA ORIENTAÇÃO
+                        </label>
+
+                        <input
+                            type="number"
+                            id="vagas"
+                            name="vagas"
+                            placeholder="0"
+                            min="0"
+                            max="20"
+                            required
+                        >
+
+                    </div>
+
+                </div>
+
+
+                <div class="linha">
+
+                    <div class="campo">
+
+                        <label for="senha">
+                            SENHA
+                        </label>
+
+                        <input
+                            type="password"
+                            id="senha"
+                            name="senha"
+                            placeholder="••••••••"
+                            maxlength="50"
+                            title="A senha deve possuir pelo menos 8 caracteres"
+                            required
+                        >
+
+                    </div>
+
+                </div>
+
+
+                <button
+                    type="submit"
+                    class="botao-cadastrar"
+                >
+                    Cadastrar
+                </button>
+
+            </form>
+
+
+            <p class="login">
+                Já tem conta?
+                <a href="/login">Fazer login</a>
+            </p>
+
+        </section>
+
+    </main>
+<script>
+    const campos = [
+        {
+            input: document.getElementById("cpf"),
+            erro: document.getElementById("erro-cpf"),
+            mensagem: "Digite o CPF no formato 000.000.000-00."
+        },
+        {
+            input: document.getElementById("telefone"),
+            erro: document.getElementById("erro-telefone"),
+            mensagem: "Digite o telefone no formato (00) 00000-0000."
+        },
+        {
+            input: document.getElementById("ra"),
+            erro: document.getElementById("erro-ra"),
+            mensagem: "Digite o RA no formato 00.000.000-0."
+        },
+        {
+            input: document.getElementById("email"),
+            erro: document.getElementById("erro-email"),
+            mensagem: "Digite um e-mail válido."
+        }
+    ];
+
+    campos.forEach(function(campo) {
+
+        campo.input.addEventListener("invalid", function(event) {
+
+            if (!campo.input.validity.valueMissing) {
+                event.preventDefault();
+                campo.erro.textContent = campo.mensagem;
+            }
+
+        });
+
+        campo.input.addEventListener("input", function() {
+            campo.erro.textContent = "";
+        });
+
+    });
+</script>
+</body>
+
+</html>
