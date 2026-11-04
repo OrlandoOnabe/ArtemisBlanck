@@ -272,6 +272,16 @@ nav a.ativo {
     cursor: not-allowed;
 }
 
+.mensagem-erro {
+    background-color: #3d1f1f;
+    color: #ff6b6b;
+    border: 1px solid #ff6b6b;
+    padding: 12px 16px;
+    border-radius: 8px;
+    margin: 20px 0;
+    font-size: 14px;
+}
+
 @media (max-width: 650px) {
     header {
         padding: 0 20px;

@@ -1,8 +1,11 @@
 from supabase import create_client
 import bcrypt
+import os
+from dotenv import load_dotenv
+load_dotenv()
 
-SUPABASE_URL = "URL"
-SUPABASE_KEY = "KEY"
+SUPABASE_URL = os.getenv("SUPABASE_URL")
+SUPABASE_KEY = os.getenv("SUPABASE_KEY")
 
 supabase = create_client(SUPABASE_URL, SUPABASE_KEY)
 
@@ -16,7 +19,37 @@ def cadastrar_aluno(nome, cpf, telefone, ra, email, senha):
             "campo": "cpf",
             "mensagem": "Este CPF já está cadastrado."
         }
-        
+
+    validar_email = (
+            supabase
+            .table("usuario")
+            .select("id")
+            .eq("email", email)
+            .execute()
+        )
+
+    if validar_email.data:
+        return {
+            "sucesso": False,
+            "campo": "email",
+            "mensagem": "Este e-mail já está cadastrado."
+        }
+
+    validar_ra = (
+        supabase
+        .table("aluno")
+        .select("usuario_id")
+        .eq("ra", ra)
+        .execute()
+    )
+
+    if validar_ra.data:
+        return {
+            "sucesso": False,
+            "campo": "ra",
+            "mensagem": "Este RA já está cadastrado."
+        }
+            
     senha_hash = bcrypt.hashpw(senha.encode("utf-8"), bcrypt.gensalt())
 
     resposta_usuario = supabase.table("usuario").insert({
@@ -50,6 +83,21 @@ def cadastrar_orientador(nome, cpf, telefone, email, area_atuacao, vagas, senha)
             "campo": "cpf",
             "mensagem": "Este CPF já está cadastrado."
         }
+
+    validar_email = (
+                supabase
+                .table("usuario")
+                .select("id")
+                .eq("email", email)
+                .execute()
+            )
+    
+    if validar_email.data:
+        return {
+                "sucesso": False,
+                "campo": "email",
+                "mensagem": "Este e-mail já está cadastrado."
+            }
             
     senha_hash = bcrypt.hashpw(senha.encode("utf-8"), bcrypt.gensalt())
 

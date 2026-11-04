@@ -55,6 +55,27 @@
                 </div>
             </div>
 
+            <form method="GET" action="/orientadores" class="filtro-orientadores">
+
+            <input
+                type="text"
+                name="area_atuacao"
+                placeholder="Pesquisar por área de atuação..."
+                value="{{ filtro or '' }}"
+            >
+
+            <button type="submit">
+                Filtrar
+            </button>
+
+            {% if filtro %}
+                <a href="/orientadores" class="limpar-filtro">
+                    Limpar
+                </a>
+            {% endif %}
+
+            </form>
+            <br>
 
             <div class="lista-orientadores">
 

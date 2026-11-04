@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>{{ tarefa.titulo }} | Artemis</title>
+
+    <link rel="stylesheet" href="/static/css/tarefa.css">
+</head>
+
+<body>
+
+<header>
+
+    <a href="/tcc/{{ tcc_id }}" class="logo">
+        <div class="logo-simbolo">A</div>
+
+        <div>
+            <h2>Artemis</h2>
+            <span>BLANCK</span>
+        </div>
+    </a>
+
+    <nav>
+        <a href="/tcc/{{ tcc_id }}">Voltar</a>
+        <a href="/logout">Sair</a>
+    </nav>
+
+</header>
+
+
+<main class="container">
+
+    <section class="cabecalho-pagina">
+
+        <span class="tag">
+            TAREFA
+        </span>
+
+        <h1>{{ tarefa.titulo }}</h1>
+
+        {% if tarefa.descricao %}
+            <p class="descricao">
+                {{ tarefa.descricao }}
+            </p>
+        {% endif %}
+
+    </section>
+
+
+    {% if orientador %}
+
+        <section class="secao">
+
+            <div class="titulo-secao">
+                <span class="numero">01</span>
+                <h2>Registrar feedback</h2>
+            </div>
+
+
+            {% if erro %}
+                <div class="mensagem-erro">
+                    {{ erro }}
+                </div>
+            {% endif %}
+
+
+            <form
+                method="POST"
+                action="/tcc/{{ tcc_id }}/tarefas/{{ tarefa.id }}/feedback"
+                class="form-feedback"
+            >
+
+                <div class="campo">
+
+                    <label for="texto">
+                        Feedback
+                    </label>
+
+                    <textarea
+                        id="texto"
+                        name="texto"
+                        rows="6"
+                        placeholder="Escreva seu feedback sobre esta tarefa..."
+                        required
+                    ></textarea>
+
+                </div>
+
+
+                <button
+                    type="submit"
+                    class="botao-principal"
+                >
+                    Registrar feedback
+                </button>
+
+            </form>
+
+        </section>
+
+    {% endif %}
+
+        <section class="secao">
+
+        <div class="titulo-secao">
+            <span class="numero">02</span>
+            <h2>Feedbacks</h2>
+        </div>
+
+        {% if feedbacks %}
+
+            <div class="lista-feedbacks">
+
+                {% for feedback in feedbacks %}
+
+                    <div class="card-feedback">
+
+                        <div class="cabecalho-feedback">
+                            <span>FEEDBACK</span>
+
+                            <span class="data-feedback">
+                                {{ feedback.data_criacao }}
+                            </span>
+                        </div>
+
+                        <p>
+                            {{ feedback.texto }}
+                        </p>
+
+                    </div>
+
+                {% endfor %}
+
+            </div>
+
+        {% else %}
+
+            <div class="sem-feedback">
+                <p>Nenhum feedback registrado para esta tarefa.</p>
+            </div>
+
+        {% endif %}
+
+    </section>
+
+</main>
+
+</body>
+</html>

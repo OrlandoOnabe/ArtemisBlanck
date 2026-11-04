@@ -101,17 +101,56 @@
             </div>
 
 
+            {% if tccs %}
+
+            <div class="lista-tccs">
+
+                {% for tcc in tccs %}
+
+                    <a href="/tcc/{{ tcc.id }}" class="card card-tcc">
+
+                        <div class="icone-vazio">
+                            TCC
+                        </div>
+
+                        <div class="dados-tcc">
+
+                            <h3>{{ tcc.titulo }}</h3>
+
+                            <p>
+                                Aluno: {{ tcc.aluno.usuario.nome }}
+                            </p>
+
+                            <p>
+                                {{ tcc.descricao }}
+                            </p>
+
+                        </div>
+
+                    </a>
+
+                {% endfor %}
+
+            </div>
+
+        {% else %}
+
             <div class="card estado-vazio">
 
                 <div class="icone-vazio">
                     TCC
                 </div>
 
-                <h3>Nenhum TCC vinculado</h3>
+                <h3>Nenhum TCC sendo orientado</h3>
 
+                <p>
+                    Quando um aluno cadastrar um TCC com você como orientador,
+                    ele aparecerá aqui.
+                </p>
 
             </div>
 
+        {% endif %}
         </section>
 
         <section class="secao">

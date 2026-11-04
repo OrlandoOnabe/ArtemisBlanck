@@ -203,6 +203,60 @@ nav a.ativo {
     line-height: 1.6;
 }
 
+/* TCCs orientados */
+
+.lista-tccs {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.card-tcc {
+    display: flex;
+    align-items: center;
+    gap: 22px;
+    text-decoration: none;
+    color: inherit;
+    transition: border-color 0.2s, transform 0.2s;
+}
+
+.card-tcc:hover {
+    border-color: #c9aa52;
+    transform: translateY(-2px);
+}
+
+.card-tcc .icone-vazio {
+    flex-shrink: 0;
+    margin-bottom: 0;
+}
+
+.dados-tcc {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+}
+
+.dados-tcc h3 {
+    color: #e6e9ef;
+    font-family: Georgia, serif;
+    font-size: 18px;
+    font-weight: normal;
+}
+
+.dados-tcc p {
+    color: #75819a;
+    font-size: 12px;
+    line-height: 1.5;
+}
+
+.dados-tcc span {
+    color: #c9aa52;
+    font-size: 9px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
 @media (max-width: 650px) {
     header {
         padding: 0 20px;

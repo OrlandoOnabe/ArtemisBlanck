@@ -94,22 +94,47 @@
             </div>
 
 
-            <div class="card estado-vazio">
+            {% if tcc %}
 
-                <div class="icone-vazio">
-                    TCC
-                </div>
+        <a href="/tcc/{{ tcc.id }}" class="card card-tcc">
 
-                <h3>Nenhum TCC cadastrado</h3>
+            <div class="icone-vazio">
+                TCC
+            </div>
 
-                <br>
+            <div class="dados-tcc">
+                <h3>{{ tcc.titulo }}</h3>
 
-                <button class="botao-principal" disabled>
-                    Cadastrar TCC
-                </button>
-
+                <p>
+                    Orientador:
+                    {{ tcc.orientador.usuario.nome }}
+                </p>
 
             </div>
+
+        </a>
+
+    {% else %}
+
+        <div class="card estado-vazio">
+
+            <div class="icone-vazio">
+                TCC
+            </div>
+
+            <h3>Nenhum TCC cadastrado</h3>
+
+            <br>
+
+            <form action="/tcc/cadastrar" method="GET">
+                <button type="submit" class="botao-principal">
+                    Cadastrar TCC
+                </button>
+            </form>
+
+        </div>
+
+    {% endif %}
 
         </section>
 

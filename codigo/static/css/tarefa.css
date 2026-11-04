@@ -1,0 +1,438 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: #0f141d;
+    color: #e6e9ef;
+    font-family: Arial, Helvetica, sans-serif;
+    min-height: 100vh;
+}
+
+
+/* HEADER */
+
+header {
+    height: 72px;
+    background: #111720;
+    border-bottom: 1px solid #252c38;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 0 7%;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    text-decoration: none;
+    color: #e6e9ef;
+}
+
+.logo-simbolo {
+    width: 40px;
+    height: 40px;
+
+    border: 1px solid #c9aa52;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    color: #c9aa52;
+
+    font-family: Georgia, serif;
+    font-size: 22px;
+}
+
+.logo h2 {
+    font-family: Georgia, serif;
+    font-size: 18px;
+    font-weight: normal;
+    letter-spacing: 1px;
+}
+
+.logo span {
+    display: block;
+
+    margin-top: 2px;
+
+    color: #75819a;
+
+    font-size: 8px;
+    font-weight: bold;
+    letter-spacing: 3px;
+}
+
+nav {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+}
+
+nav a {
+    color: #8b95a8;
+
+    text-decoration: none;
+
+    font-size: 11px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+
+    transition: color 0.2s;
+}
+
+nav a:hover {
+    color: #c9aa52;
+}
+
+
+/* CONTEÚDO */
+
+.container {
+    width: 86%;
+    max-width: 1100px;
+
+    margin: 0 auto;
+
+    padding: 65px 0 80px;
+}
+
+
+/* CABEÇALHO DA TAREFA */
+
+.cabecalho-pagina {
+    padding-bottom: 42px;
+
+    border-bottom: 1px solid #252c38;
+}
+
+.tag {
+    display: inline-block;
+
+    margin-bottom: 15px;
+
+    color: #c9aa52;
+
+    font-size: 9px;
+    font-weight: bold;
+
+    letter-spacing: 2px;
+}
+
+.cabecalho-pagina h1 {
+    max-width: 800px;
+
+    color: #e6e9ef;
+
+    font-family: Georgia, serif;
+    font-size: 38px;
+    font-weight: normal;
+
+    line-height: 1.2;
+}
+
+.descricao {
+    max-width: 750px;
+
+    margin-top: 18px;
+
+    color: #7f899d;
+
+    font-size: 13px;
+    line-height: 1.8;
+}
+
+
+/* SEÇÃO */
+
+.secao {
+    margin-top: 50px;
+}
+
+.titulo-secao {
+    display: flex;
+    align-items: center;
+    gap: 13px;
+
+    margin-bottom: 25px;
+}
+
+.numero {
+    width: 30px;
+    height: 30px;
+
+    border: 1px solid #c9aa52;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    color: #c9aa52;
+
+    font-size: 9px;
+    font-weight: bold;
+}
+
+.titulo-secao h2 {
+    color: #dce0e8;
+
+    font-family: Georgia, serif;
+    font-size: 20px;
+    font-weight: normal;
+}
+
+
+/* FORMULÁRIO */
+
+.form-feedback {
+    background: #141b25;
+
+    border: 1px solid #29313e;
+    border-radius: 4px;
+
+    padding: 30px;
+}
+
+.campo {
+    display: flex;
+    flex-direction: column;
+
+    gap: 10px;
+}
+
+.campo label {
+    color: #aeb5c2;
+
+    font-size: 10px;
+    font-weight: bold;
+
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.campo textarea {
+    width: 100%;
+    min-height: 160px;
+
+    padding: 15px;
+
+    background: #0f151e;
+
+    border: 1px solid #303948;
+    border-radius: 3px;
+
+    color: #e6e9ef;
+
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 13px;
+
+    line-height: 1.6;
+
+    resize: vertical;
+
+    outline: none;
+
+    transition:
+        border-color 0.2s,
+        background 0.2s;
+}
+
+.campo textarea::placeholder {
+    color: #586274;
+}
+
+.campo textarea:focus {
+    border-color: #c9aa52;
+    background: #111821;
+}
+
+
+/* BOTÃO */
+
+.botao-principal {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    margin-top: 22px;
+
+    padding: 13px 23px;
+
+    background: #c9aa52;
+
+    border: 1px solid #c9aa52;
+    border-radius: 2px;
+
+    color: #11151c;
+
+    font-size: 10px;
+    font-weight: bold;
+
+    letter-spacing: 1px;
+    text-transform: uppercase;
+
+    cursor: pointer;
+
+    transition:
+        background 0.2s,
+        border-color 0.2s,
+        transform 0.2s;
+}
+
+.botao-principal:hover {
+    background: #d8ba61;
+    border-color: #d8ba61;
+
+    transform: translateY(-1px);
+}
+
+
+/* MENSAGEM DE ERRO */
+
+.mensagem-erro {
+    margin-bottom: 20px;
+
+    padding: 13px 15px;
+
+    background: #24191b;
+
+    border: 1px solid #63363b;
+    border-left: 3px solid #a94a54;
+
+    color: #d58b92;
+
+    font-size: 12px;
+    line-height: 1.5;
+}
+
+
+.lista-feedbacks {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.card-feedback {
+    position: relative;
+
+    padding: 22px 24px;
+
+    background: #141b25;
+
+    border: 1px solid #29313e;
+    border-left: 3px solid #c9aa52;
+
+    border-radius: 4px;
+}
+
+.cabecalho-feedback {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 20px;
+
+    margin-bottom: 14px;
+}
+
+.cabecalho-feedback > span:first-child {
+    color: #c9aa52;
+
+    font-size: 9px;
+    font-weight: bold;
+
+    letter-spacing: 1.5px;
+}
+
+.data-feedback {
+    color: #596579;
+
+    font-size: 9px;
+    letter-spacing: 0.5px;
+}
+
+.card-feedback p {
+    color: #b5bdca;
+
+    font-size: 13px;
+    line-height: 1.7;
+
+    white-space: pre-wrap;
+}
+
+.sem-feedback {
+    padding: 25px;
+
+    background: #141b25;
+
+    border: 1px solid #29313e;
+    border-radius: 4px;
+
+    text-align: center;
+}
+
+.sem-feedback p {
+    color: #687489;
+
+    font-size: 12px;
+}
+
+
+
+
+@media (max-width: 700px) {
+
+    .cabecalho-feedback {
+        flex-direction: column;
+        align-items: flex-start;
+
+        gap: 7px;
+    }
+
+}
+
+@media (max-width: 700px) {
+
+    header {
+        height: auto;
+
+        padding: 18px 6%;
+
+        flex-direction: column;
+        align-items: flex-start;
+
+        gap: 18px;
+    }
+
+    nav {
+        width: 100%;
+
+        gap: 22px;
+    }
+
+    .container {
+        width: 88%;
+
+        padding-top: 45px;
+    }
+
+    .cabecalho-pagina h1 {
+        font-size: 29px;
+    }
+
+    .form-feedback {
+        padding: 22px;
+    }
+
+    .botao-principal {
+        width: 100%;
+    }
+}

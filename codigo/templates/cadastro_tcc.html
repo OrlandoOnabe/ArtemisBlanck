@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Cadastrar TCC | Artemis</title>
+
+    <link rel="stylesheet" href="/static/css/cadastro_tcc.css">
+</head>
+
+<body>
+
+<header>
+
+    <a href="/central/aluno" class="logo">
+        <div class="logo-simbolo">A</div>
+
+        <div>
+            <h2>Artemis</h2>
+            <span>BLANCK</span>
+        </div>
+    </a>
+
+    <nav>
+        <a href="/central/aluno">Início</a>
+        <a href="/orientadores">Orientadores</a>
+        <a href="/logout">Sair</a>
+    </nav>
+
+</header>
+
+
+<main class="container">
+
+    <section class="cabecalho-pagina">
+        <span class="tag">TCC</span>
+        <h1>Cadastrar TCC</h1>
+
+        <p>
+            Cadastre as informações do seu Trabalho de Conclusão de Curso.
+        </p>
+    </section>
+
+
+    <section class="secao">
+
+        <div class="titulo-secao">
+            <div>
+                <span class="numero">01</span>
+                <h2>Informações do TCC</h2>
+            </div>
+        </div>
+
+        {% if erro %}
+            <div class="mensagem-erro">
+                {{ erro }}
+            </div>
+        {% endif %}
+
+        <form method="POST" action="/tcc/cadastrar" class="form-tcc">
+
+            <div class="campo">
+                <label for="titulo">Título do TCC</label>
+
+                <input
+                    type="text"
+                    id="titulo"
+                    name="titulo"
+                    placeholder="Digite o título do TCC"
+                    required
+                >
+            </div>
+
+
+            <div class="campo">
+                <label for="descricao">Descrição</label>
+
+                <textarea
+                    id="descricao"
+                    name="descricao"
+                    rows="5"
+                    placeholder="Descreva brevemente o tema do TCC"
+                    required
+                ></textarea>
+            </div>
+
+
+            <div class="campo">
+                <label for="orientador_id">Orientador</label>
+
+                <select
+                    id="orientador_id"
+                    name="orientador_id"
+                    required
+                >
+
+                    <option value="">
+                        Selecione um orientador
+                    </option>
+
+                    {% for orientador in orientadores %}
+
+                        <option value="{{ orientador.usuario_id }}">
+                            {{ orientador.usuario.nome }}
+                            — {{ orientador.area_atuacao }}
+                            ({{ orientador.vagas }} vagas)
+                        </option>
+
+                    {% endfor %}
+
+                </select>
+            </div>
+
+
+            <button type="submit" class="botao-cadastrar">
+                Cadastrar TCC
+            </button>
+
+        </form>
+
+    </section>
+
+</main>
+
+</body>
+</html>

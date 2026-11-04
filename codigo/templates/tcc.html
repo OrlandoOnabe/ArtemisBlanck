@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>{{ tcc.titulo }} | Artemis</title>
+
+    <link rel="stylesheet" href="/static/css/tcc.css">
+</head>
+
+<body>
+
+<header>
+
+    <a href="javascript:history.back()" class="logo">
+        <div class="logo-simbolo">A</div>
+
+        <div>
+            <h2>Artemis</h2>
+            <span>BLANCK</span>
+        </div>
+    </a>
+
+    <nav>
+        <a href="javascript:history.back()">Voltar</a>
+        <a href="/logout">Sair</a>
+    </nav>
+
+</header>
+
+
+<main class="container">
+
+
+    <section class="cabecalho-tcc">
+
+        <span class="tag">
+            TRABALHO DE CONCLUSÃO DE CURSO
+        </span>
+
+        <h1>{{ tcc.titulo }}</h1>
+
+        <p class="descricao-tcc">
+            {{ tcc.descricao }}
+        </p>
+
+    </section>
+
+
+    <section class="secao-kanban">
+
+        <div class="cabecalho-kanban">
+
+            <div class="titulo-secao">
+
+                <span class="numero">
+                    01
+                </span>
+
+                <h2>
+                    Quadro de tarefas
+                </h2>
+
+            </div>
+
+
+            {% if pode_editar %}
+                <a href="/tcc/{{ tcc.id }}/tarefas/criar" class="botao-principal">
+                    + Criar tarefa
+                </a>
+            {% endif %}
+
+        </div>
+
+
+        <div class="kanban">
+
+
+            <div
+                class="coluna-kanban"
+                data-status="A_FAZER"
+            >
+
+                <div class="titulo-coluna">
+
+                    <div>
+                        <span class="indicador indicador-fazer"></span>
+                        <h3>A fazer</h3>
+                    </div>
+
+                    <span class="contador">
+                        {{ tarefas_a_fazer|length }}
+                    </span>
+
+                </div>
+
+
+                <div class="lista-tarefas">
+
+                    {% for tarefa in tarefas_a_fazer %}
+
+                        <div
+                            class="tarefa"
+                            draggable="{{ 'true' if pode_editar else 'false' }}"
+                            data-id="{{ tarefa.id }}"
+                        >
+
+                            <div class="barra-tarefa"></div>
+
+                            <h4>
+                                <a href="/tcc/{{ tcc.id }}/tarefas/{{ tarefa.id }}" class="link-tarefa">
+                                    {{ tarefa.titulo }}
+                                </a>
+                            </h4>
+
+                            {% if tarefa.descricao %}
+
+                                <p>
+                                    {{ tarefa.descricao }}
+                                </p>
+
+                            {% endif %}
+
+                        </div>
+
+                    {% endfor %}
+
+                </div>
+
+            </div>
+
+
+
+            <div
+                class="coluna-kanban"
+                data-status="FAZENDO"
+            >
+
+                <div class="titulo-coluna">
+
+                    <div>
+                        <span class="indicador indicador-andamento"></span>
+                        <h3>Fazendo</h3>
+                    </div>
+
+                    <span class="contador">
+                        {{ tarefas_fazendo|length }}
+                    </span>
+
+                </div>
+
+
+                <div class="lista-tarefas">
+
+                    {% for tarefa in tarefas_fazendo %}
+
+                        <div
+                            class="tarefa"
+                            draggable="{{ 'true' if pode_editar else 'false' }}"
+                            data-id="{{ tarefa.id }}"
+                        >
+
+                            <div class="barra-tarefa"></div>
+
+                            <h4>
+                                <a href="/tcc/{{ tcc.id }}/tarefas/{{ tarefa.id }}" class="link-tarefa">
+                                    {{ tarefa.titulo }}
+                                </a>
+                            </h4>
+
+                            {% if tarefa.descricao %}
+
+                                <p>
+                                    {{ tarefa.descricao }}
+                                </p>
+
+                            {% endif %}
+
+                        </div>
+
+                    {% endfor %}
+
+                </div>
+
+            </div>
+
+
+            <div
+                class="coluna-kanban"
+                data-status="FEITO"
+            >
+
+                <div class="titulo-coluna">
+
+                    <div>
+                        <span class="indicador indicador-concluido"></span>
+                        <h3>Feito</h3>
+                    </div>
+
+                    <span class="contador">
+                        {{ tarefas_feito|length }}
+                    </span>
+
+                </div>
+
+
+                <div class="lista-tarefas">
+
+                    {% for tarefa in tarefas_feito %}
+
+                        <div
+                            class="tarefa"
+                            draggable="{{ 'true' if pode_editar else 'false' }}"
+                            data-id="{{ tarefa.id }}"
+                        >
+
+                            <div class="barra-tarefa"></div>
+
+                            <h4>
+                                <a href="/tcc/{{ tcc.id }}/tarefas/{{ tarefa.id }}" class="link-tarefa">
+                                    {{ tarefa.titulo }}
+                                </a>
+                            </h4>
+
+                            {% if tarefa.descricao %}
+
+                                <p>
+                                    {{ tarefa.descricao }}
+                                </p>
+
+                            {% endif %}
+
+                        </div>
+
+                    {% endfor %}
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+</main>
+
+{% if pode_editar %}
+<script>
+
+let tarefaArrastada = null;
+
+
+document.querySelectorAll(".tarefa").forEach(tarefa => {
+
+    tarefa.addEventListener("dragstart", function () {
+
+        tarefaArrastada = this;
+
+        this.classList.add("arrastando");
+
+    });
+
+
+    tarefa.addEventListener("dragend", function () {
+
+        this.classList.remove("arrastando");
+
+        tarefaArrastada = null;
+
+        document
+            .querySelectorAll(".coluna-kanban")
+            .forEach(coluna => {
+
+                coluna.classList.remove("drag-over");
+
+            });
+
+    });
+
+});
+
+
+document.querySelectorAll(".coluna-kanban").forEach(coluna => {
+
+    coluna.addEventListener("dragover", function (event) {
+
+        event.preventDefault();
+
+        this.classList.add("drag-over");
+
+    });
+
+
+    coluna.addEventListener("dragleave", function (event) {
+
+        if (!this.contains(event.relatedTarget)) {
+            this.classList.remove("drag-over");
+        }
+
+    });
+
+
+    coluna.addEventListener("drop", async function (event) {
+
+        event.preventDefault();
+
+        this.classList.remove("drag-over");
+
+
+        if (!tarefaArrastada) {
+            return;
+        }
+
+
+        const colunaDestino = this;
+
+        const colunaAnterior =
+            tarefaArrastada.closest(".coluna-kanban");
+
+
+        if (colunaDestino === colunaAnterior) {
+            return;
+        }
+
+
+        const tarefaId =
+            tarefaArrastada.dataset.id;
+
+        const novoStatus =
+            colunaDestino.dataset.status;
+
+
+        const listaDestino =
+            colunaDestino.querySelector(".lista-tarefas");
+
+        const listaAnterior =
+            colunaAnterior.querySelector(".lista-tarefas");
+
+
+        listaDestino.appendChild(tarefaArrastada);
+
+        atualizarContadores();
+
+
+        const dados = new URLSearchParams();
+
+        dados.append(
+            "novo_status",
+            novoStatus
+        );
+
+
+        try {
+
+            const resposta = await fetch(
+                `/tcc/{{ tcc.id }}/tarefas/${tarefaId}/status`,
+                {
+                    method: "POST",
+
+                    headers: {
+                        "Content-Type":
+                            "application/x-www-form-urlencoded"
+                    },
+
+                    body: dados
+                }
+            );
+
+
+            const resultado =
+                await resposta.json();
+
+
+            if (!resultado.sucesso) {
+
+                listaAnterior.appendChild(
+                    tarefaArrastada
+                );
+
+                atualizarContadores();
+
+                alert(
+                    resultado.mensagem ||
+                    "Não foi possível mover a tarefa."
+                );
+
+            }
+
+        }
+
+        catch (erro) {
+
+            listaAnterior.appendChild(
+                tarefaArrastada
+            );
+
+            atualizarContadores();
+
+            alert(
+                "Erro ao atualizar o status da tarefa."
+            );
+
+        }
+
+    });
+
+});
+
+
+function atualizarContadores() {
+
+    document
+        .querySelectorAll(".coluna-kanban")
+        .forEach(coluna => {
+
+            const quantidade =
+                coluna.querySelectorAll(".tarefa").length;
+
+            coluna
+                .querySelector(".contador")
+                .textContent = quantidade;
+
+        });
+
+}
+
+</script>
+{% endif %}
+
+</body>
+</html>

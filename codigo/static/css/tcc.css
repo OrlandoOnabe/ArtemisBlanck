@@ -1,0 +1,486 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+body {
+    min-height: 100vh;
+
+    background-color: #0f141d;
+    color: #f5f5f5;
+
+    font-family: Arial, sans-serif;
+}
+
+
+/* HEADER */
+
+header {
+    height: 80px;
+    padding: 0 7%;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    background-color: #111720;
+
+    border-bottom: 1px solid #2a3240;
+}
+
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    color: #f5f5f5;
+    text-decoration: none;
+}
+
+
+.logo-simbolo {
+    width: 42px;
+    height: 42px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background-color: #c9aa52;
+    color: #0f141d;
+
+    font-size: 22px;
+    font-weight: bold;
+}
+
+
+.logo h2 {
+    font-size: 18px;
+}
+
+
+.logo span {
+    color: #c9aa52;
+
+    font-size: 10px;
+
+    letter-spacing: 3px;
+}
+
+
+nav {
+    display: flex;
+    gap: 30px;
+}
+
+
+nav a {
+    color: #8995ad;
+
+    font-size: 14px;
+
+    text-decoration: none;
+}
+
+
+nav a:hover {
+    color: #c9aa52;
+}
+
+
+/* CONTEÚDO */
+
+.container {
+    width: 88%;
+    max-width: 1400px;
+
+    margin: 50px auto;
+}
+
+
+/* CABEÇALHO TCC */
+
+.cabecalho-tcc {
+    padding-bottom: 35px;
+
+    border-bottom: 1px solid #2a3240;
+}
+
+
+.tag {
+    color: #c9aa52;
+
+    font-size: 10px;
+    font-weight: bold;
+
+    letter-spacing: 2px;
+}
+
+
+.cabecalho-tcc h1 {
+    margin-top: 10px;
+
+    color: #f5f5f5;
+
+    font-family: Georgia, serif;
+    font-size: 38px;
+    font-weight: normal;
+}
+
+
+.descricao-tcc {
+    max-width: 900px;
+
+    margin-top: 15px;
+
+    color: #8995ad;
+
+    font-size: 14px;
+    line-height: 1.7;
+}
+
+
+/* SEÇÃO KANBAN */
+
+.secao-kanban {
+    margin-top: 40px;
+}
+
+
+.cabecalho-kanban {
+    margin-bottom: 25px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+
+.titulo-secao {
+    display: flex;
+    align-items: center;
+
+    gap: 12px;
+}
+
+
+.numero {
+    color: #c9aa52;
+
+    font-size: 12px;
+    font-weight: bold;
+}
+
+
+.titulo-secao h2 {
+    color: #f5f5f5;
+
+    font-family: Georgia, serif;
+    font-size: 22px;
+    font-weight: normal;
+}
+
+
+/* BOTÃO */
+
+.botao-principal {
+    display: inline-block;
+
+    padding: 12px 20px;
+
+    background-color: #c9aa52;
+    color: #0f141d;
+
+    border: none;
+    border-radius: 4px;
+
+    font-size: 12px;
+    font-weight: bold;
+
+    text-decoration: none;
+
+    cursor: pointer;
+
+    transition:
+        filter 0.2s,
+        transform 0.2s;
+}
+
+
+.botao-principal:hover {
+    filter: brightness(1.1);
+
+    transform: translateY(-1px);
+}
+
+
+/* KANBAN */
+
+.kanban {
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, minmax(0, 1fr));
+
+    gap: 18px;
+
+    align-items: start;
+}
+
+
+/* COLUNAS */
+
+.coluna-kanban {
+    min-height: 480px;
+
+    padding: 18px;
+
+    background-color: #131923;
+
+    border: 1px solid #2a3240;
+    border-radius: 8px;
+
+    transition:
+        border-color 0.2s,
+        background-color 0.2s,
+        transform 0.2s;
+}
+
+
+.coluna-kanban.drag-over {
+    background-color: #171e29;
+
+    border-color: #c9aa52;
+
+    transform: translateY(-2px);
+}
+
+
+/* TÍTULO DA COLUNA */
+
+.titulo-coluna {
+    margin-bottom: 18px;
+    padding-bottom: 14px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    border-bottom: 1px solid #2a3240;
+}
+
+
+.titulo-coluna > div {
+    display: flex;
+    align-items: center;
+
+    gap: 9px;
+}
+
+
+.titulo-coluna h3 {
+    color: #dfe3ea;
+
+    font-size: 11px;
+    font-weight: bold;
+
+    letter-spacing: 1px;
+
+    text-transform: uppercase;
+}
+
+
+/* INDICADORES */
+
+.indicador {
+    width: 7px;
+    height: 7px;
+
+    display: block;
+
+    border-radius: 50%;
+}
+
+
+.indicador-fazer {
+    background-color: #8995ad;
+}
+
+
+.indicador-andamento {
+    background-color: #c9aa52;
+}
+
+
+.indicador-concluido {
+    background-color: #5d9b76;
+}
+
+
+/* CONTADOR */
+
+.contador {
+    min-width: 25px;
+    height: 25px;
+
+    padding: 0 7px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background-color: #202733;
+    color: #8995ad;
+
+    border-radius: 20px;
+
+    font-size: 11px;
+}
+
+
+/* ÁREA QUE RECEBE OS CARDS */
+
+.lista-tarefas {
+    min-height: 380px;
+
+    display: flex;
+    flex-direction: column;
+
+    gap: 12px;
+}
+
+
+/* CARD TAREFA */
+
+.tarefa {
+    padding: 17px;
+
+    background-color: #1a212c;
+
+    border: 1px solid #2a3240;
+    border-radius: 6px;
+
+    cursor: grab;
+
+    user-select: none;
+
+    transition:
+        transform 0.15s,
+        border-color 0.15s,
+        opacity 0.15s;
+}
+
+
+.tarefa:hover {
+    border-color: #596579;
+
+    transform: translateY(-2px);
+}
+
+
+.tarefa:active {
+    cursor: grabbing;
+}
+
+
+.tarefa.arrastando {
+    opacity: 0.35;
+
+    transform: scale(0.98);
+}
+
+
+.barra-tarefa {
+    width: 38px;
+    height: 4px;
+
+    margin-bottom: 12px;
+
+    background-color: #c9aa52;
+
+    border-radius: 10px;
+}
+
+
+.tarefa h4 {
+    color: #e6e9ef;
+
+    font-size: 14px;
+    font-weight: normal;
+
+    line-height: 1.4;
+}
+
+
+.tarefa p {
+    margin-top: 9px;
+
+    color: #75819a;
+
+    font-size: 12px;
+
+    line-height: 1.5;
+}
+
+
+.link-tarefa {
+    color: inherit;
+    text-decoration: none;
+}
+
+.link-tarefa:hover {
+    color: #c9aa52;
+}
+
+@media (max-width: 900px) {
+
+    .kanban {
+        grid-template-columns: 1fr;
+    }
+
+
+    .coluna-kanban {
+        min-height: 250px;
+    }
+
+
+    .lista-tarefas {
+        min-height: 150px;
+    }
+
+}
+
+
+@media (max-width: 600px) {
+
+    header {
+        padding: 0 5%;
+    }
+
+
+    nav {
+        gap: 15px;
+    }
+
+
+    .container {
+        width: 90%;
+    }
+
+
+    .cabecalho-tcc h1 {
+        font-size: 30px;
+    }
+
+
+    .cabecalho-kanban {
+        flex-direction: column;
+        align-items: flex-start;
+
+        gap: 18px;
+    }
+
+}

@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Criar Tarefa | Artemis</title>
+
+    <link rel="stylesheet" href="/static/css/criar_tarefa.css">
+</head>
+
+<body>
+
+<header>
+
+    <a href="/tcc/{{ tcc_id }}" class="logo">
+        <div class="logo-simbolo">A</div>
+
+        <div>
+            <h2>Artemis</h2>
+            <span>BLANCK</span>
+        </div>
+    </a>
+
+    <nav>
+        <a href="/tcc/{{ tcc_id }}">Voltar</a>
+        <a href="/logout">Sair</a>
+    </nav>
+
+</header>
+
+
+<main class="container">
+
+    <section class="cabecalho-pagina">
+
+        <span class="tag">TAREFA</span>
+
+        <h1>Criar tarefa</h1>
+
+        <p>
+            Adicione uma nova tarefa ao quadro Kanban do TCC.
+        </p>
+
+    </section>
+
+
+    <section class="secao">
+
+        <div class="titulo-secao">
+            <span class="numero">01</span>
+            <h2>Informações da tarefa</h2>
+        </div>
+
+
+        {% if erro %}
+
+            <div class="mensagem-erro">
+                {{ erro }}
+            </div>
+
+        {% endif %}
+
+
+        <form
+            method="POST"
+            action="/tcc/{{ tcc_id }}/tarefas/criar"
+            class="form-tarefa"
+        >
+
+            <div class="campo">
+
+                <label for="titulo">
+                    Título
+                </label>
+
+                <input
+                    type="text"
+                    id="titulo"
+                    name="titulo"
+                    maxlength="150"
+                    placeholder="Digite o título da tarefa"
+                    required
+                >
+
+            </div>
+
+
+            <div class="campo">
+
+                <label for="descricao">
+                    Descrição
+                </label>
+
+                <textarea
+                    id="descricao"
+                    name="descricao"
+                    rows="5"
+                    placeholder="Descreva a tarefa"
+                ></textarea>
+
+            </div>
+
+
+            <div class="acoes">
+
+                <a
+                    href="/tcc/{{ tcc_id }}"
+                    class="botao-secundario"
+                >
+                    Cancelar
+                </a>
+
+                <button
+                    type="submit"
+                    class="botao-principal"
+                >
+                    Criar tarefa
+                </button>
+
+            </div>
+
+        </form>
+
+    </section>
+
+</main>
+
+</body>
+</html>

@@ -55,6 +55,12 @@
 
         </section>
 
+        {% if erro %}
+            <div class="mensagem-erro">
+                {{ erro }}
+            </div>
+        {% endif %}
+
 
         {% if not calendar_conectado %}
 
